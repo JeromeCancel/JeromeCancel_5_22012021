@@ -1,5 +1,10 @@
 
 /*---------IndexStyles--------*/
+
+body {
+    font-family: 'Arial', 'sans-serif';
+}
+
 .bold{
     font-weight: 700;
     letter-spacing: 0.070em;

@@ -1,5 +1,13 @@
+
+import ProductManager from './ProductManager.js'
+
+const productManager = new ProductManager ();
+
+
 fetch ('http://localhost:3000/api/cameras')
     .then ((response) => {
-        response.json ();
+        return response.json ();
     })
-    .then (json => console.log(json));
+    .then (products => {
+        productManager.display(products)
+    });

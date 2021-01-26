@@ -1,0 +1,10 @@
+// lA PAGE DOIT ETRE DYNAMIQUE ? //
+    
+    // SI NON => OK //
+
+
+    // SI OUI =>  //
+
+   // 1- RECUPERER LES DATAS DE L API //
+   // 2- AVOIR LES DONNEES DANS UN TABLEAU, LE PARCOURIR ET Y PRENDRE LE 1ER INDEX ET LE PLACER DANS LE 1ER CONTENEUR (manipuler le DOM pour placer le title / price / descrition) // 
+   // 3- PARCOURIR TOUS LES INDEX JUSQU A LA FIN DU TABLEAU //  ???
