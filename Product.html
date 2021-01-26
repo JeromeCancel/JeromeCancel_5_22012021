@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="Style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="Favicon/favicon-16x16.png">
+    <link rel="manifest" href="Favicon/site.webmanifest">
     <title>Document</title>
     <meta name="description" content=""> 
 </head>
@@ -12,15 +16,16 @@
         <!--Navbar-->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <div class="container-fluid justify-content-sm-start justify-content-between">
-            <a class="navbar-brand" href="Orinoco.html"></a>
+            <a class="navbar-brand" href="index.html">
                 <img src="/Images/Logo-orinoco.png" width="170" height="60" alt="Logo du site">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div id="navbarContent" class="collapse navbar-collapse justify-content-end">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active text-uppercase bold" href="Orinoco.html">Accueil</a>
+                        <a class="nav-link active text-uppercase bold" href="index.html">Accueil</a>
                     </li>
                     <li class="nav-item">
                         <span class="nav-link" href="#">|</span>
@@ -40,24 +45,54 @@
     </nav>
     <!--mainContent-->
     <div class="container">
-        <div class="row w-75 mx-auto mt-4 shadow">
-            <div class="col h-75">
-                <div class="card h-50">
-                    <img src="/Images/vcam_1.jpg" class="img-top img-fluid" alt="Appareil photo">
-                </div>
+        <div class="row mt-4">
+            <!--displayCurrentProduct-->
+            <div class="col-lg-9 mb-5">
+                <div class="card">
+                    <img class="card-img-top img-fluid img-product" src="/Images/vcam_2.jpg" id="imageUrl" alt="Modèle d'appareil photo">
                     <div class="card-body">
-                        <h2 class="card-title text-decoration-none text-uppercase text-primary">Item one</h2>
-                        <h3 class="text-success">20.00€</h3>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis vel provident blanditiis. Doloremque hic voluptatum voluptatem autem qui recusandae. Sint necessitatibus consequatur earum commodi minus ipsa tenetur nisi modi doloribus!</p>
-                        <span class="text-warning">★ ★ ★ ★ ☆</span>
+                        <h2 class="card-title text-decoration-none text-uppercase text-primary" id="name">Product Name</h2>
+                        <h3 class="text-success" id="price">$24.99</h3>
+                        <p class="card-text" id="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente dicta fugit fugiat hic aliquam itaque facere, soluta. Totam id dolores, sint aperiam sequi pariatur praesentium animi perspiciatis molestias iure, ducimus!</p>
                     </div>
+                    <div class="card-footer py-sm-3 d-flex justify-content-between">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Choisir sa lentille
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                              <button class="dropdown-item" type="button">Action</button>
+                              <button class="dropdown-item" type="button">Another action</button>
+                              <button class="dropdown-item" type="button">Something else here</button>
+                            </div>
+                        </div>
+                        <a href="Basket.html" class="btn btn-success">Ajouter au panier</a>
+                    </div>
+                  </div>
+            </div>
+            <!--displayFakeReviews-->
+            <div class="col-lg-3 mb-5">
+                <div class="card">
+                    <div class="card-header">
+                        Derniers commentaires
+                    </div>
+                    <div class="card-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+                        <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+                        <hr>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+                        <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+                        <hr class="pb-hr">
+                        <a href="#" class="btn btn-success">Laissez un commentaire</a>
+                      </div>
+                </div>               
             </div>
         </div>
-    </div>
+    </div>   
     <!--Footer-->
     <footer class="container-fluid bg-dark mt-4">
-        <div class="row justify-content-sm-around">
-            <div class="col-3 mt-3">
+        <div class="row justify-content-sm-around mx-auto">
+            <div class="col-3 mt-3 padding-col-footer">
                 <h4 class="text-white text-uppercase bold">à propos</h4>
                 <ul class="list-unstyled bold">
                     <li>
@@ -71,7 +106,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-3 mt-3">
+            <div class="col-3 mt-3 padding-col-footer">
                 <h4 class="text-white text-uppercase bold">aide</h4>
                 <ul class="list-unstyled bold">
                     <li>
@@ -85,7 +120,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-3 mt-3">
+            <div class="col-3 mt-3 padding-col-footer">
                 <h4 class="text-white text-uppercase bold">nous suivre</h4>
                 <ul class="list-unstyled bold">
                     <li>
@@ -106,7 +141,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <script src="Ajax.js"></script>
-    <script src="Product.js"></script>
+    <script src="JS/Ajax.js"></script>
+    <script src="JS/Product.js"></script>
 </body>
 </html>

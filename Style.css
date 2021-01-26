@@ -1,3 +1,5 @@
+
+/*---------IndexStyles--------*/
 .bold{
     font-weight: 700;
     letter-spacing: 0.070em;
@@ -109,6 +111,11 @@ h4 {
     }
 }
 
+.padding-col-footer {
+    padding-right: 0;
+    width: 33%;
+}
+
 .footer-link {
     font-size: 0.8rem;
 }
@@ -123,6 +130,17 @@ h4 {
     width: 15px;
 }
 
-.ml-perso {
-    margin-left: 200px;
+/*---------productStyles---------*/
+
+.product-col {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.img-product {
+    height: 400px;
+}
+
+.pb-hr {
+    margin-top: 36px;
 }
