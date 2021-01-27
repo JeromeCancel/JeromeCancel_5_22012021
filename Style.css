@@ -116,6 +116,12 @@ h4 {
     }
 }
 
+.starRatings {
+    width: 15px;
+    height: 15px;
+    color: yellow;
+}
+
 .padding-col-footer {
     padding-right: 0;
     width: 33%;

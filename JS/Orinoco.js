@@ -1,10 +1,30 @@
-// lA PAGE DOIT ETRE DYNAMIQUE ? //
-    
-    // SI NON => OK //
 
+function getData() {
+    fetch('http://localhost:3000/api/cameras')
+    .then(response => {
+        if(!response.ok) {
+            throw Error('ERROR');
+        }
+        return response.json();
+    })
+    .then( products => {
+        products.forEach(product => {displayProduct(product)})
+    })
+}
 
-    // SI OUI =>  //
+getData();
 
-   // 1- RECUPERER LES DATAS DE L API //
-   // 2- AVOIR LES DONNEES DANS UN TABLEAU, LE PARCOURIR ET Y PRENDRE LE 1ER INDEX ET LE PLACER DANS LE 1ER CONTENEUR (manipuler le DOM pour placer le title / price / descrition) // 
-   // 3- PARCOURIR TOUS LES INDEX JUSQU A LA FIN DU TABLEAU //  ???
+function displayProduct (product) {
+
+    const templateElt = document.getElementById ('cardTemplate');
+
+    const cloneElt = document.importNode (templateElt.content, true);
+
+    cloneElt.getElementById('productLinkCard').href = `/product.html?id= ${product._id}`
+    cloneElt.getElementById('productImg').src = product.imageUrl
+    cloneElt.getElementById('productTitle').textContent = product.name
+    cloneElt.getElementById('productPrice').textContent = `${product.price / 100}.00€`
+    cloneElt.getElementById('productDescription').textContent = product.description
+
+    document.getElementById('productsContainer').appendChild(cloneElt)
+}

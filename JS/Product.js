@@ -1,3 +1,20 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // CHOSES A PREVOIR POUR CETTE PAGE: //
 
 // 1- RECUPERER LES DONNEES DE L API POUR LES STOCKER ET POUVOIR LES RENVOYER PAR LA SUITE
@@ -16,3 +33,20 @@
 
 
 // 4- 
+
+
+/**
+ * @param {string} tag
+ * @param {array} classes
+ * @return HTMLElement
+ */
+ /*function createElementWithClasses(tag, classes = [])
+{
+    let element = document.createElement(tag);
+    for (let className of classes) {
+        element.classList.add(className);
+    }
+
+    return element;
+}*/
+
