@@ -31,7 +31,7 @@
                         <span class="nav-link" href="#">|</span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-uppercase bold" href="#">Contact</a>
+                        <a class="nav-link text-uppercase bold" href="mailto:Orinoco-photo@adresse.com">Contact</a>
                     </li>
                     <li class="nav-item">
                         <span class="nav-link" href="#">|</span>
@@ -43,9 +43,10 @@
             </div>
         </div>
     </nav>
+    <!--endOfNavbar-->
     <!--mainContent-->
     <div class="container">
-        <!--carouselProduct-->
+        <!--carouselDisplay-->
         <div class="row">
             <div class="col">
                 <div id="carouselIndicators" class="carousel slide my-4" data-ride="carousel">
@@ -58,19 +59,19 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="./images/vcam_4.jpg" class="d-block w-100 img-fluid" alt="">
+                            <img src="" class="d-block w-100 img-fluid imgCarousel" alt="Modèle d'appareil photo">
                         </div>
                         <div class="carousel-item">
-                            <img src="./images/vcam_2.jpg" class="d-block w-100 img-fluid" alt="">
+                            <img src="" class="d-block w-100 img-fluid imgCarousel" alt="Modèle d'appareil photo">
                         </div>
                         <div class="carousel-item">
-                            <img src="./images/vcam_5.jpg" class="d-block w-100 img-fluid" alt="">
+                            <img src="" class="d-block w-100 img-fluid imgCarousel" alt="Modèle d'appareil photo">
                         </div>
                         <div class="carousel-item">
-                            <img src="./images/vcam_3.jpg" class="d-block w-100 img-fluid" alt="">
+                            <img src="" class="d-block w-100 img-fluid imgCarousel" alt="Modèle d'appareil photo">
                         </div>
                         <div class="carousel-item">
-                            <img src="./images/vcam_1.jpg" class="d-block w-100 img-fluid" alt="">
+                            <img src="" class="d-block w-100 img-fluid imgCarousel" alt="Modèle d'appareil photo">
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-bs-slide="prev">
@@ -84,7 +85,8 @@
                 </div>
             </div>
         </div>
-        <!--Title-->
+        <!--endOfCarouselDisplay-->
+        <!--mainTitle-->
         <div class="row">
             <div class="col">
                 <h1>Passionné par la photographie, 
@@ -92,28 +94,35 @@
                 </h1>
             </div>
         </div>
+        <!--endOfMainTitle-->
         <!--cardsProduct-->
-        <div class="row mt-4" id="home">
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100 hover-shadow">
-                    <a href="product.html">
-                        <img class="card-img-top" src="./Images/vcam_1.jpg" alt="Modèle d'appareil photo">
-                    </a>
-                    <div class="card-body">
-                        <h2 class="card-title">
-                            <a class="text-decoration-none text-uppercase text-primary" href="product.html">Zurss 50S</a>
-                        </h2>
-                        <h3 class="text-success">Price.€</h3>
-                        <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, quidem facilis? Mollitia laboriosam ad quis sed, libero repellat debitis accusantium, ipsum laborum neque sint in illum optio adipisci aspernatur corporis!</p>
-                    </div>
-                    <div class="card-footer">
-                        <img src="./images/star-solid.svg" class="starRating">
+        <div class="row mt-4" id="productsContainer">
+            <!--templateForJS-->
+            <template id="cardTemplate">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 hover-shadow">
+                        <a href="" id="productLinkCard">
+                            <img class="card-img-top" src="" id="productImg" alt="Modèle d'appareil photo">
+                        </a>
+                        <div class="card-body">
+                            <h2 class="card-title">
+                                <a class="text-decoration-none text-uppercase text-primary" href="" id="productTitle"></a>
+                            </h2>
+                            <h3 class="text-success" id="productPrice"></h3>
+                            <p class="card-text" id="productDescription"></p>
+                        </div>
+                        <div class="card-footer">
+                            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9733;</span>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </template>
+            <!--endOfTemplateForJS-->
         </div>
+        <!--endOfCardsProduct-->
     </div>
-    <!--Footer-->
+    <!--endOfMainContent-->
+    <!--footer-->
     <footer class="container-fluid bg-dark mt-4">
         <div class="row justify-content-sm-around">
             <div class="col-3 mt-3">
@@ -152,19 +161,20 @@
                         <a class="text-muted text-decoration-none footer-link" href="#">Facebook</a>
                     </li>
                     <li>
-                        <span><img src="./images/twitter.svg" class="social-icon" alt="Logo de facebook"></span>
+                        <span><img src="./images/twitter.svg" class="social-icon" alt="Logo de Twitter"></span>
                         <a class="text-muted text-decoration-none footer-link" href="#">Twitter</a>
                     </li>
                     <li>
-                        <span><img src="./images/instagram.svg" class="social-icon" alt="Logo de facebook"></span>
+                        <span><img src="./images/instagram.svg" class="social-icon" alt="Logo de Instagram"></span>
                         <a class="text-muted text-decoration-none footer-link" href="#">Instagram</a>
                     </li>
                 </ul>
             </div>
         </div>
     </footer>
+    <!--endOfFooter-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <script type="module" src="JS/Ajax.js"></script>
+    <script type="" src="JS/Ajax.js"></script>
     <script src="JS/Orinoco.js"></script>
 </body>
 </html>
