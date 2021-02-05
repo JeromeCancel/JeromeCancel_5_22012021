@@ -14,7 +14,7 @@
 
 </head>
 <body>
-    <!--Navbar-->
+    <!--navbar-->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <div class="container-fluid justify-content-sm-start justify-content-between">
             <a class="navbar-brand" href="index.html">
@@ -44,55 +44,125 @@
             </div>
         </div>
     </nav>
-    <!--DisplayShoppingCart-->
-    <!--Form-->
-    <form class="needs-validation container mt-3 border rounded shadow" novalidate>
-        <div class="form-row d-flex justify-content-between">
-            <div class="col-md-3 mb-3">
-                <label for="validationCustom01" class="py-2"></label>
-                <input type="text" class="form-control text-muted" id="validationCustom01" placeholder="firstName" value="Prénom" required>
-                <div class="valid-feedback">
-                    Ok
-                </div>
-            </div>
-            <div class="col-md-3 mb-3">
-                <label for="validationCustom02" class="py-2">Rentrez votre nom</label>
-                <input type="text" class="form-control text-muted" id="validationCustom02" placeholder="lastName" value="Nom" required>
-                <div class="valid-feedback">
-                    Ok
-                </div>
+    <!--endOfNavbar-->
+    <!--mainContent-->
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-lg-12 text-center card py-3" id="containerSwitchTitle">
+                <h1 class="text-uppercase" id="switchTitle"></h1>
             </div>
         </div>
-        <div class="form-row d-flex justify-content-between">
-            <div class="col-md-4 mb-3">
-                <label for="validationCustom03" class="py-2">Rentrez votre ville</label>
-                <input type="text" class="form-control text-muted" id="validationCustom03" placeholder="city" value="Ville" required>
-                <div class="valid-feedback">
-                    Ok
+        <div class="row mt-5" id="displayCartConainer">
+            <!--displayShoppingCart-->
+            <!--templateForJS-->
+            <template id="displayCartItem">
+                <div class="col-lg-9 mb-3">
+                    <div class="card d-flex flex-row align-items-center shadow ">
+                        <img src="" class="rounded float-start placeholder" id="imgCart" alt="Image du produit selectionné">
+                        <div class="card-body">
+                            <h2 class="card-title text-decoration-none text-uppercase text-primary " id="name">Product Name</h2>
+                                <button class="btn btn-outline-danger btn-template">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" id="btnRemoveItem" class="bi bi-trash" viewBox="0 0 16 16">
+                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                    </svg>
+                                </button>
+                            <h3 class="text-success pt-2" id="price"></h3>
+                            <h4 class="bold pt-3">Lentille: 
+                                <span class="text-muted" id="lenseChoice"></span>
+                            </h4>
+                        </div>
+                        <div class="d-flex flex-column align-items-center my-3" id="containerQuantity">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" id="btnQtyPlus" class="bi bi-chevron-up" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+                            </svg>
+                            <span class="quantityProduct">0</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" id="btnQtyMinus" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4 mb-3">
-                <label for="validationCustom04" class="py-2">Rentrez votre adresse</label>
-                <input type="text" class="form-control text-muted" id="validationCustom04" placeholder="adress" value="Adresse" required>
-                <div class="valid-feedback">
-                    Ok
+            </template>
+            <!--endOfTemplateForJS-->
+            <!--endOFDisplayShoppingCart-->
+            <!--containerTotalPrice-->
+            <div class="col-lg-3 sticky-top">
+                <div class="card text-center">
+                    <div class="card-body">
+                         <h2 class="card-title text-decoration-none text-uppercase text-primary" id="totalPriceTitle">prix total</h2>
+                    </div>
+                    <div class="card-footer d-flex flex-column">
+                        <h3 class="text-success py-3" id="totalPrice">1500.55 €</h3>
+                        <button class="btn btn-success mb-3" id="btnValidate">Valider votre commande</button>
+                    </div>
                 </div>
-            </div>
+             </div>
+             <!--endOfContainerTotalPrice-->
+             <!--overlay-->
+             <div id="overlay">
+                 <div class="overlayExitSvg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" id="btnCloseOverlay" viewBox="0 0 16 16">
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                    </svg>
+                    <span class="overlayExitText text-uppercase bold text-white">retour en arrière</span>
+                 </div>
+                <!--form-->
+                <div class="container py-5">
+                    <div class="row mt-5" >
+                        <div class="col-md-6 offset-md-3 pt-1">
+                            <div class="card card-outline-secondary">
+                                <div class="card-header d-flex justify-content-center py-3 mb-3">
+                                    <h2 class="mb-0">Veuillez remplir ce formulaire</h2>
+                                </div>
+                                <div class="card-body">
+                                    <form class="form needs-validation" role="form" autocomplete="off" id="form" novalidate method="POST">
+                                        <div class="form-group row justify-content-center">
+                                            <label class="col-lg-9" for="firstName">
+                                                <input class="form-control" type="text" id="firstName" placeholder="Prénom" required>
+                                            </label>
+                                            <p class="text-danger text-center feedbackInput">Veuillez rentrer votre prénom.</p>
+                                        </div>
+                                        <div class="form-group row justify-content-center">
+                                            <label class="col-lg-9" for="lastName">
+                                                <input class="form-control" type="text" id="lastName" placeholder="Nom">
+                                            </label>
+                                            <p class="text-danger text-center feedbackInput">Veuillez rentrer votre nom.</p>
+                                        </div>
+                                        <div class="form-group row justify-content-center">
+                                            <label class="col-lg-9" for="email">
+                                                <input class="form-control" type="email" id="email" placeholder="email@gmail.com" required>
+                                            </label>
+                                            <p class="text-danger text-center feedbackInput">veuillez rentrer un email valide.</p>
+                                        </div>
+                                        <div class="form-group row justify-content-center">
+                                            <label class="col-lg-9" for="city">
+                                                <input class="form-control" type="text" id="city" placeholder="Ville">
+                                            </label>
+                                            <p class="text-danger text-center feedbackInput">Veuillez rentrer votre ville.</p>
+                                        </div>
+                                        <div class="form-group row justify-content-center">
+                                            <label class="col-lg-9" for="adress">
+                                                <input class="form-control" type="text" id="adress" placeholder="Adresse">
+                                            </label>
+                                            <p class="text-danger text-center feedbackInput">Veuillez rentrer votre adresse.</p>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="card-footer d-flex justify-content-center py-3">
+                                    <button class="btn btn-success" type="submit">Confimer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--endOfForm-->
+             </div>
+             <!--endOfOverlay-->
         </div>
-        <div class="form-row d-flex justify-content-between align-items-center">
-            <div class="col-md-6 mb-3">
-                <label for="validationCustomEmail" class="py-2">Rentrez votre email</label>
-                <input type="email" class="form-control text-muted" id="validationCustomEmail" placeholder="email" value="Exemple@adresse.mail" required>
-                <div class="valid-feedback">
-                    Ok
-                </div>
-            </div>
-            <div class="col-md-3 mb-3">
-                <button class="btn btn-success">Valider votre commande</button>
-            </div>
-        </div>
-    </form>
-    <!--Footer-->
+    </div>
+    <!--endOfMainContent-->
+    <!--footer-->
     <footer class="container-fluid bg-dark mt-4">
         <div class="row justify-content-sm-around">
             <div class="col-3 mt-3">
@@ -142,9 +212,9 @@
             </div>
         </div>
     </footer>
-
+    <!--endOfFooter-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <script type="module" src="JS/Ajax.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
     <script src="JS/Shopping-cart.js"></script>
 </body>
 </html>

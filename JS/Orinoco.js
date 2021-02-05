@@ -1,4 +1,3 @@
-
 function getData() {
     // APPEL A L API //
     fetch('http://localhost:3000/api/cameras')

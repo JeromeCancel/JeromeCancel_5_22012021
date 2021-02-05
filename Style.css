@@ -109,3 +109,130 @@ h4 {
     height: 400px;
 }
 
+/*-----------------------------------shoppingCartStyles----------------------*/
+
+#containerSwitchTitle{
+    background-color: #f7f7f7;
+}
+
+.placeholder {
+    width: 150px;
+    height: 150px;
+}
+
+#switchTitle {
+    font-size: 2rem;
+}
+
+.btn-outline-danger{
+    margin-left: 50px;
+    width: 35px;
+    height: 30px;
+}
+
+svg.bi-trash{
+    margin-bottom: 9px;
+    margin-left: -3px;
+}
+
+#totalPriceTitle{
+    margin-bottom: 0 !important;
+}
+
+.sticky-top{
+    order: 1000;
+}
+
+@media all and (max-width: 992px) {
+    .sticky-top{
+        order: 1;
+    }
+}
+
+#containerQuantity{
+    height: 100%;
+    width: 15%;
+}
+
+.btn-template{
+    position: absolute;
+    top: 35%;
+    left: 25%;
+}
+
+svg.bi-chevron-up{
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+svg.bi-chevron-down{
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.quantityProduct{
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+#overlay {
+    position: fixed; 
+    width: 0; 
+    height: 100%; 
+    top: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.9); 
+    z-index: 1200; 
+    overflow: hidden;
+    transition: 0.7s;
+    opacity: 0;
+}
+
+svg.bi-x{
+      width: 50px;
+      height: 50px;
+      color: white;
+      cursor: pointer;
+}
+
+.overlayExitSvg{
+    position: absolute;
+    top: 5%;
+    left: 35%;
+    margin-bottom: 20px;
+}
+
+@media all and (max-width: 1600px){
+    .overlayExitSvg{
+        left: 30%;
+    }
+
+}
+
+@media all and (max-width: 1300px){
+    .overlayExitSvg{
+        left: 28%;
+    }
+
+}
+
+
+@media all and (max-width: 445px){
+    .overlayExitSvg{
+        left: 12%;
+    }
+
+}
+
+.overlayExitText{
+    vertical-align: middle;
+}
+
+.feedbackInput{
+    visibility: hidden;
+}
+
