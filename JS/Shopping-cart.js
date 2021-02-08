@@ -1,11 +1,11 @@
-const btnQtyPlus = document.getElementById('btnQtyPlus');
-const btnQtyMinus = document.getElementById('btnQtyMinus');
-const btnRemoveItem = document.getElementById('btnRemoveItem');
+const btnQtyPlus = document.querySelector('.bi-chevron-up');
+const btnQtyMinus = document.querySelector('.bi-chevron-down');
+const btnRemoveItem = document.querySelector('.btn-template');
 const btnValidate = document.getElementById('btnValidate');
 const btnCloseOverlay = document.getElementById('btnCloseOverlay');
 const displayCartConainer = document.getElementById('displayCartConainer');
 const displayCartItem = document.getElementById('displayCartItem');
-const product = JSON.parse(localStorage.getItem("cart"));
+const products = JSON.parse(localStorage.getItem("cart"));
 
 
 function switchTitle() {
@@ -22,7 +22,7 @@ function updateCart() {
 
 }
 
-function displayCart(product) {
+products.forEach(function displayCart(product) {
 
 
     const templateElt = document.getElementById('displayCartItem');
@@ -36,16 +36,38 @@ function displayCart(product) {
 
     document.getElementById('displayCartConainer').appendChild(cloneElt)
 
-    //localStorage.setItem('??', JSON.stringify('??'));
+});
 
-}
-displayCart(product);
 
-function removeItem() {
-    btnRemoveItem.addEventListener('click',)
-        displayCartConainer.removeChild('displayCartItem > ${itemToRemove}');
-        localStorage.removeItem('??', '??');
-}
+
+displayCartItem.addEventListener('click', event => {
+        
+    if (event.target.classList.contains('btn-template')) {
+        console.log(event.target)
+        displayCartConainer.removeChild('displayCartItem');
+        localStorage.removeItem('product')
+    }
+    else if (event.target.classList.contains('bi-chevron-up')){
+        console.log(event.target)
+    }
+    else if (event.target.classList.contains('bi-chevron-down')){
+        console.log(event.target)
+    }
+    event.stopPropagation();
+}) 
+    
+
+
+
+/*function removeItem() {
+    btnRemoveItem.addEventListener('click', function(event) {
+        console.log(btnRemoveItem)
+        event.stopPropagation()
+        displayCartConainer.removeChild('displayCartItem');
+        localStorage.removeItem('product');
+
+    })
+}*/
 
 
 function increaseQty() {
@@ -53,7 +75,6 @@ function increaseQty() {
 }
 
 // 4- ECOUTER UN BTN + PERMETTANT D AJOUTER LE MEME PRODUIT {
-//      RECUPERER L ECOUTE
 //      RETOURNER L ECOUTE ET AJOUTER +1 A LA QUANTITE
 //      AJOUTER +1 AU LOCAL STORAGE
     // localStorage.setItem('??', JSON.stringify('??'));
@@ -63,7 +84,6 @@ function decreaseQty() {
     btnQtyMinus.addEventListener('click',)
 }
 // 5- ECOUTER UN BTN - PERMETTANT D ENLEVER LE MEME PRODUIT {
-//      RECUPERER L ECOUTE
 //      RETOURNER L ECOUTE ET SOUSTRAIRE -1 A LA QUANTITE
 //      SOUSTRAIRE -1 AU LOCAL STORAGE
     // localStorage.removeItem('??',('??'));
@@ -101,5 +121,79 @@ function overlayOff() {
     }) 
 }
 overlayOff();
+
+
+
+///////////////////////////////////////////////form-manager/////////////////////////////////////////////////
+
+const form = document.getElementById('form');
+const firstName = document.getElementById('firstName');
+const lastName = document.getElementById('lastName');
+const email = document.getElementById('email');
+const city = document.getElementById('city');
+const adress = document.getElementById('adress');
+
+
+form.addEventListener('submit', e =>{
+    e.preventDefault()
+
+    checkvalidity()
+});
+
+function checkvalidity() {
+
+    const firstNameValue = firstName.value.trim();
+    const lastNameValue = lastName.value.trim();
+    const emailValue = email.value.trim();
+    const cityValue = city.value.trim();
+    const adressValue = adress.value.trim();
+
+    if(firstNameValue === '') {
+        setErrorFor(firstName, "Veuillez remplir ce champ");
+    } else {
+        setSuccessFor(firstName);
+    }
+
+    if(lastNameValue === '') {
+        setErrorFor(lastName, "Veuillez remplir ce champ");
+    } else {
+        setSuccessFor(lastName);
+    }
+
+    if(emailValue === '') {
+        setErrorFor(email, "Veuillez remplir ce champ");
+    } else if (!emailValidity(email.value)) {
+        setErrorFor(email, "Cet email n'est pas valide");
+    } else {
+        setSuccessFor(email);
+    }
+
+    if(cityValue === '') {
+        setErrorFor(city, "Veuillez remplir ce champ");
+    } else {
+        setSuccessFor(city);
+    }
+
+    if(adressValue === '') {
+        setErrorFor(adress, "Veuillez remplir ce champ");
+    } else {
+        setSuccessFor(adress);
+    }
+};
+
+function setErrorFor(input, message) {
+    const formGroup = input.parentElement;
+    const small = formGroup.querySelector('small');
+    formGroup.className = 'form-group error';
+	small.innerText = message;
+};
+
+function setSuccessFor(input) {
+    const formGroup = input.parentElement;
+    formGroup.className = 'form-group success';
     
-    
+};
+
+function emailValidity(email) {
+    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+};

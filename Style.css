@@ -109,6 +109,11 @@ h4 {
     height: 400px;
 }
 
+#lenseBox{
+    margin-top: 8px;
+    font-style: italic;
+}
+
 /*-----------------------------------shoppingCartStyles----------------------*/
 
 #containerSwitchTitle{
@@ -118,6 +123,7 @@ h4 {
 .placeholder {
     width: 150px;
     height: 150px;
+    object-fit: cover;
 }
 
 #switchTitle {
@@ -179,6 +185,8 @@ svg.bi-chevron-down{
     font-weight: bold;
 }
 
+/*-----------------------------------overlayStyles----------------------*/
+
 #overlay {
     position: fixed; 
     width: 0; 
@@ -232,7 +240,78 @@ svg.bi-x{
     vertical-align: middle;
 }
 
-.feedbackInput{
-    visibility: hidden;
+
+/*-----------------------------------formStyles----------------------*/
+
+
+.form {
+	padding: 0px 20px;	
 }
 
+.form-group {
+	margin-bottom: 10px;
+	padding-bottom: 20px;
+	position: relative;
+}
+
+.form-group label {
+	display: inline-block;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+.form-group input {
+	border: 2px solid #f0f0f0;
+	border-radius: 4px;
+	display: block;
+	font-family: inherit;
+	font-size: 14px;
+	padding: 10px;
+	width: 100%;
+}
+
+.form-group input:focus {
+	outline: 0;
+	border-color: #777;
+}
+
+.form-group.success input {
+	border-color: #2ecc71;
+}
+
+.form-group.error input {
+	border-color: #e74c3c;
+}
+
+.form-group svg {
+	visibility: hidden;
+	position: absolute;
+	top: 40px;
+	right: 10px;
+}
+
+.form-group.success svg.bi-check-circle-fill {
+	color: #2ecc71;
+	visibility: visible;
+}
+
+.form-group.error svg.bi-exclamation-circle-fill {
+	color: #e74c3c;
+	visibility: visible;
+}
+
+.form-group small {
+	color: #e74c3c;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	visibility: hidden;
+}
+
+.form-group.error small {
+	visibility: visible;
+}
+
+#confirm {
+    margin-bottom: 0;
+}
