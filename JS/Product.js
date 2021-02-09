@@ -54,19 +54,28 @@ function displayProduct(product) {
     
 };
 
+// FONCTION PERMETTANT D AFFICHER LES LENTILLES DANS LE DROPDOWN DYNAMIQUEMENT ET DE RECUPERER LA LENTILLE CHOISIE //
 function displayLense(lenses) {
+    // CREATION DE BOUTONS SELON LA QUANTITE DE LENTILLE //
     let dropdownItems = document.createElement('button');
+    // ATTRIBUTION DE LA CLASSE BOOTSTRAP + AJOUT DE LA VALUE POUR LA RECUPERER PLUS TARD //
     dropdownItems.setAttribute('class', 'dropdown-item');
     dropdownItems.setAttribute('value', lenses);
+    // AJOUT DU NOM DE LA LENTILLE SUR SON BOUTON //
     dropdownItems.innerHTML = lenses;
+    // AJOUT DU BOUTON DANS LE DOM//
     dropdown.appendChild(dropdownItems);
+    // CREATION D UN VARIABLE POUR RECUPERER LA LENTILLE CHOISI //
     let lenseSelected = document.getElementsByClassName('dropdown-item');
+    // BOUCLE DANS LE TABLEAU DE LENTILLE //
     for(let i = 0; i < lenseSelected.length; i++) {
+        // RECUPERATION DE LA LENTILLE CHOISIE AU CLICK //
         lenseSelected[i].addEventListener('click', function(){
-
+            // RECUPERATION DU CONTENEUR POUR AFFICHER LE CHOIX DE LA LENTILLE //
             let lenseBox = document.getElementById('lenseBox')
-
+            // RECUPERATION DE LA LENTILLE CHOISIE DANS UNE VARIABLE //
             const buttonClicked = this.value;
+            // AFFICHAGE DE LA LENTILLE CHOISIE DANS SON CONTENEUR //
             lenseBox.textContent = 'Votre lentille : ' + buttonClicked;
             //addToCartProduct.push(buttonClicked);
         })
