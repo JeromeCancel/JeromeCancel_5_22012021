@@ -52,12 +52,12 @@
                 <h1 class="text-uppercase" id="switchTitle"></h1>
             </div>
         </div>
-        <div class="row mt-5" id="displayCartConainer">
+        <div class="row mt-5" id="displayCartContainer">
             <!--displayShoppingCart-->
             <!--templateForJS-->
             <template id="displayCartItem">
-                <div class="col-lg-9 mb-3">
-                    <div class="card d-flex flex-row align-items-center hover-shadow " >
+                <div class="col-lg-9 mb-3 templateChild" id="childNodeForRemove">
+                    <div class="card d-flex flex-row align-items-center hover-shadow card-container" >
                         <img src="" class="rounded float-start placeholder" id="imgCart" alt="Image du produit selectionné">
                         <div class="card-body">
                             <h2 class="card-title text-decoration-none text-uppercase text-primary " id="name"></h2>
@@ -76,7 +76,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" id="btnQtyPlus" class="bi bi-chevron-up" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
                             </svg>
-                            <span class="quantityProduct">0</span>
+                            <span class="quantityProduct"></span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" id="btnQtyMinus" class="bi bi-chevron-down" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                             </svg>
@@ -190,9 +190,9 @@
     </div>
     <!--endOfMainContent-->
     <!--footer-->
-    <footer class="container-fluid bg-dark mt-4 fixed-bottom">
-        <div class="row justify-content-sm-around">
-            <div class="col-3 mt-3">
+    <footer class="container-fluid bg-dark mt-4 pb-1 fixed-bottom">
+        <div class="row justify-content-sm-around mx-auto">
+            <div class="col-3 mt-3 padding-col-footer">
                 <h4 class="text-white text-uppercase bold">à propos</h4>
                 <ul class="list-unstyled bold">
                     <li>
@@ -206,7 +206,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-3 mt-3">
+            <div class="col-3 mt-3 padding-col-footer">
                 <h4 class="text-white text-uppercase bold">aide</h4>
                 <ul class="list-unstyled bold">
                     <li>
@@ -220,7 +220,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-3 mt-3">
+            <div class="col-3 mt-3 padding-col-footer">
                 <h4 class="text-white text-uppercase bold">nous suivre</h4>
                 <ul class="list-unstyled bold">
                     <li>

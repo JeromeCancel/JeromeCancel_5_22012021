@@ -1,24 +1,32 @@
-// RECUPERATION DES ELEMENTS // 
-const btnQtyPlus = document.querySelector('.bi-chevron-up');
-const btnQtyMinus = document.querySelector('.bi-chevron-down');
-const btnRemoveItem = document.querySelector('.btn-template');
+
+// ON RECUPERE LES DONNEES DE LA PAGE PRODUCT //
+productChoose = localStorage.getItem("object");
+idProduct = localStorage.getItem("id");
+
+productsArray = JSON.parse(productChoose);
+products= JSON.parse(idProduct);
+
+
+// RECUPERATION DES ELEMENTS DU DOM // 
 const btnValidate = document.getElementById('btnValidate');
 const btnCloseOverlay = document.getElementById('btnCloseOverlay');
-const displayCartConainer = document.getElementById('displayCartConainer');
+const displayCartContainer = document.getElementById('displayCartContainer');
 const displayCartItem = document.getElementById('displayCartItem');
-const titleContainer = document.getElementById('switchTitle')
-const products = JSON.parse(localStorage.getItem("cart"));
+const titleContainer = document.getElementById('switchTitle');
 
-// FONCTION PERMETTANT DE MODIFIER LE TITRE DE LA PAGE SELON SI LE PANIER EST VIDE OU PAS //
+
+/**
+ * @description Fonction permettant de modifier le titre selon si le panier est vide ou pas
+ * @param 
+ */
 function switchTitle() {
     // VERIFICATION DU CONTENU CART DANS LE LOCALSTORAGE ET CHANGEMENT DU TITRE EN FONCTION DE LA REPONSE //
-    if(localStorage.cart.length === 0) {
+    if(localStorage.length === 0) {
         titleContainer.innerText='Votre panier est vide';
       } else {
         titleContainer.innerText='Contenu de votre panier';
       }
 }
-
 switchTitle();
 
 
@@ -26,86 +34,126 @@ function updateCart() {
 
 }
 
-// FONCTION PERMETTANT D AFFICHER LE CONTENU DU PANIER AVEC UN FOREACH //
-products.forEach(function displayCart(product) {
+/**
+ * @description Fonction permettant d'afficher le contenu du panier
+ * @param 
+ */
+function displayCart() {
+    // BOUCLE DANS LE TABLEAU DES PRODUITS DU PANIER //
+    for(i = 0; i < productsArray.length; i++ ) {
+        // RECUPERATION DU TEMPLATE HTML //
+        const templateElt = document.getElementById('displayCartItem');
+        // RECUPERATION DE LA COPIE DU TEMPLATE //
+        const cloneElt = document.importNode(templateElt.content, true);
+        // PASSAGE DES INFOS DANS LEURS CONTENEURS //
+        cloneElt.getElementById('imgCart').src = productsArray[i][0].imageUrl
+        cloneElt.getElementById('name').textContent = productsArray[i][0].name;
+        cloneElt.getElementById('price').textContent = `${productsArray[i][0].price * productsArray[i][2] / 100}.00€`; 
+        cloneElt.getElementById('lenseChoice').textContent = productsArray[i][1];
+        cloneElt.querySelector('.quantityProduct').textContent = productsArray[i][2];
+        cloneElt.querySelector('.bi-chevron-up');
+        // AJOUT DU TEMPLATE FINIS DANS LE DOM //
+        document.getElementById('displayCartContainer').appendChild(cloneElt)
 
-    // RECUPERATION DU TEMPLATE HTML //
-    const templateElt = document.getElementById('displayCartItem');
-    // RECUPERATION DE LA COPIE DU TEMPLATE //
-    const cloneElt = document.importNode(templateElt.content, true);
-    // PASSAGE DES INFOS DANS LEURS CONTENEURS //
-    cloneElt.getElementById('imgCart').src = product.imageUrl
-    cloneElt.getElementById('name').textContent = product.name;
-    cloneElt.getElementById('price').textContent = `${product.price / 100}.00€`;
-    cloneElt.getElementById('lenseChoice').textContent = product.lenses;
-    // AJOUT DU TEMPLATE FINIS DANS LE DOM //
-    document.getElementById('displayCartConainer').appendChild(cloneElt)
-
-});
-
-
-
-displayCartItem.addEventListener('click', event => {
-        
-    if (event.target.classList.contains('btn-template')) {
-        console.log(event.target)
-        displayCartConainer.removeChild('displayCartItem');
-        localStorage.removeItem('product')
     }
-    else if (event.target.classList.contains('bi-chevron-up')){
-        console.log(event.target)
+}
+
+displayCart()
+
+const cardContainer = document.querySelectorAll('.card-container');
+console.log(cardContainer)
+
+
+// SELECTIONNE ET POSITIONNE LA QUANTITE AFFICHEE A 1 //
+
+//let quantity = document.querySelectorAll('.quantityProduct');
+/*function updateQuantity () {
+    let quantity = document.querySelector('.quantityProduct')
+    if(!quantity(products[i][2])) {
+
     }
-    else if (event.target.classList.contains('bi-chevron-down')){
-        console.log(event.target)
-    }
-    event.stopPropagation();
-}) 
+}*/
+for(i = 0; i < cardContainer.length; i ++) {
+    function increaseQty() {
+        let btnQtyPlus = document.querySelector('.bi-chevron-up');
+        let quantity = document.querySelector('.quantityProduct')    
+        btnQtyPlus.addEventListener('click', function() {
+            quantity.textContent = parseInt(quantity.textContent) + 1;
+                
+        })
+    }       
     
+    increaseQty()
+    
+    function decreaseQty() {
+        let btnQtyMinus = document.querySelector('.bi-chevron-down');
+        let quantity = document.querySelector('.quantityProduct')
+        btnQtyMinus.addEventListener('click', function() {
+            quantity.textContent = parseInt(quantity.textContent) - 1;        
+                
+        })
+       
+    }
+
+    decreaseQty()
+    
+
+}
+    
+
+
+/*function increaseQty(i) {
+    let btnQtyPlus = document.querySelectorAll('.bi-chevron-up');
+    for(i = 0; i < btnQtyPlus.length; i++){
+        btnQtyPlus[i].addEventListener('click', function() {
+            let quantity = document.querySelector('.quantityProduct')
+            quantity.textContent = parseInt(quantity.textContent) + 1;
+          
+            
+        })
+    }
+   
+}
+increaseQty()
+
+function decreaseQty() {
+    let btnQtyMinus = document.querySelector('.bi-chevron-down');
+    let quantity = document.querySelector('.quantityProduct')
+    btnQtyMinus.addEventListener('click', function() {
+        quantity.textContent = parseInt(quantity.textContent) - 1;
+    })
+}
+decreaseQty()*/
+
 
 
 
 /*function removeItem() {
+    let btnRemoveItem = document.querySelector('.bi-trash');
+    let childNodeForRemove = document.getElementById('childNodeForRemove');
     btnRemoveItem.addEventListener('click', function(event) {
-        console.log(btnRemoveItem)
         event.stopPropagation()
-        displayCartConainer.removeChild('displayCartItem');
-        localStorage.removeItem('product');
+        displayCartContainer.removeChild(childNodeForRemove);
+        JSON.parse(localStorage.removeItem('cart'));
 
     })
-}*/
-
-
-function increaseQty() {
-    btnQtyPlus.addEventListener('click',)
 }
+removeItem()
 
-// 4- ECOUTER UN BTN + PERMETTANT D AJOUTER LE MEME PRODUIT {
-//      RETOURNER L ECOUTE ET AJOUTER +1 A LA QUANTITE
-//      AJOUTER +1 AU LOCAL STORAGE
-    // localStorage.setItem('??', JSON.stringify('??'));
+
 //      ADDITIONNER LE PRICE DU PRODUIT AU PRICE TOTAL => UPDATE LE PANIER? }
 
-function decreaseQty() {
-    btnQtyMinus.addEventListener('click',)
-}
-// 5- ECOUTER UN BTN - PERMETTANT D ENLEVER LE MEME PRODUIT {
-//      RETOURNER L ECOUTE ET SOUSTRAIRE -1 A LA QUANTITE
-//      SOUSTRAIRE -1 AU LOCAL STORAGE
-    // localStorage.removeItem('??',('??'));
 //      SOUSTRAIRE LE PRICE DU PRODUIT AU PRICE TOTAL => UPDATE LE PANIER? }
 
 
 
 
-/* ex de panier avec 2 lignes [
-      {id: 2656456, nom:'fdfdfd', quantite: 1}
-      {id: 265654546, nom:'fdfdfd', quantite: 2}        
-        
-             ],
-     UPDATE LE PANIER  !!!!} */
+   //  UPDATE LE PANIER  !!!!} //
 
-
-// FONCTION PERMETTANT D AFFICHER L OVERLAY + FORMULAIRE //
+/**
+ * @description Fonction permettant d'afficher l'overlay + formulaire
+ * @param 
+ */
 function overlayOn() {
     // RECUPERATION DU CLICK SUR LE BOUTON VALIDER PANIER ET MODIFICATION DU STYLE //
     btnValidate.addEventListener('click', function () {
@@ -116,7 +164,11 @@ function overlayOn() {
 }
 overlayOn();
 
-// FONCTION PERMETTANT DE CACHER L OVERLAY //
+
+/**
+ * @description Fonction permettant de cacher l'overlay
+ * @param 
+ */
 function overlayOff() {
     // RECUPERATION DU CLICK SUR LE BOUTON RETOUR EN ARRIERE ET MODIFICATION DU STYLE //
     btnCloseOverlay.addEventListener('click', function () {
@@ -145,20 +197,42 @@ const city = document.getElementById('city');
 const adress = document.getElementById('adress');
 
 // ECOUTE DU SUBMIT SUR LE FORMULAIRE //
-form.addEventListener('submit', event =>{
+form.addEventListener('submit', async event =>{
     // EMPECHE LA SOUMISSION DU FORMULAIRE //
     event.preventDefault()
     // VERIFIE LA VALIDITE DU FORMULAIRE //
-    checkvalidity()
-    // RECUPERE LES DONNEES DES INPUTS DANS UN OBJET //
-    let form = e.target;
-    const formData = new FormData(form)
-    // PERMET DE VOIR LE CONTENU DE L OBJET //
-    for(let key of formData.keys()) {
-        console.log(key, formData.get(key));
+    checkvalidity() 
+    // RECUPERE L OBJET CONTACT DANS LE LOCALSTORAGE //
+    contactJSON = localStorage.getItem('contactData');
+    contact = JSON.parse(contactJSON);
+    // PASSE LES DONNEES DANS UNE VARIABLE ORDER //
+    let order = {contact, products};
+        console.log(order)
+    
+    // VARIABLES STOCKANT LES OOPTIONS POUR LA REQUETE //
+    const options  = {
+        method: 'POST',
+        headers: {'Content-type': 'application/json'},
+        body: JSON.stringify(order),
     }
-
+    // REQUETE A L API EN EVOYANT LES DONNEES DEMANDEES //    
+    let response = await fetch('http://localhost:3000/api/cameras/order', options)
+    .then(response => response.json()) 
+    .then(json =>  {
+        confirmData(json)
+    });
+    // RECUPERATION DE LA REPONSE //
+    
 });
+
+function confirmData (json) {
+
+    let orderId = json;
+
+    localStorage.setItem('orderId', JSON.stringify(orderId));
+
+    location.href = "confirm.html";
+}
 
 // VERIFIE LA VALIDITE DU FORMULAIRE //
 function checkvalidity() {
@@ -203,7 +277,16 @@ function checkvalidity() {
     } else {
         setSuccessFor(adress);
     }
-
+    // CREATION DE L OBJET CONTACT POUR RECUPERE LES DONNEES DU FORMULAIRE //
+    let contact = {
+        firstName: firstNameValue,
+        lastName: lastNameValue,
+        address: adressValue,
+        city: cityValue,
+        email: emailValue,
+      };
+    // STOCKES L OBJET DANS LE LOCALSTORAGE //
+    localStorage.setItem('contactData', JSON.stringify(contact));
 };
 
 // FONCTION PERMETTANT DE LANCER LES ERREURS QUI PRENDS EN PARAMETRE LES INPUTS ET LES MESSAGES A DISTRIBUER //

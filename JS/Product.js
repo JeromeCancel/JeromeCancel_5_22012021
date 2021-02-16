@@ -2,8 +2,14 @@
 let params = new URLSearchParams(window.location.search);
 let idProduct = params.get("id")
 
-const addToCartProduct = [];
 const dropdown = document.querySelector('.dropdown-menu');
+const dropdownMenu = document.getElementById('dropdownMenu');
+const btnAddToCart = document.getElementById('addToCart');
+const qty = 1;
+/**
+ * @description Fonction permettant de récupérer les données du produit choisis
+ * @param {string} response 
+ */
 
 function getData() {
     // APPEL A L API //
@@ -17,69 +23,84 @@ function getData() {
         return response.json();
         console.log(response.json)
     })
-    // PASSE LA FONCTION CREE PLUS BAS DANS LE RESULTAT // 
-    .then(product => {displayProduct(product)}) 
+    // PASSE LES FONCTIONS CREES PLUS BAS DANS LE RESULTAT // 
+    .then(function (product) {
+        displayProduct(product);
+        addDataToStorage(product);
+      })    
 }
 // APPEL DE LA FONCTION //
 getData();
 
-// CREATION DE LA FONCTION POUR AFFICHER LE PRODUIT DYNAMIQUEMENT //
-function displayProduct(product) {
 
+
+/**
+ * @description Fonction permettant d'afficher dynamiquement le produit choisi
+ * @param {string} product 
+ */
+function displayProduct(product) {
     // RECUPERATION DES DIFFERENTS ELEMENTS //
     const imgUrl = document.getElementById('imageUrl');
     const nameProduct = document.getElementById('name');
     const priceProduct = document.getElementById('price');
     const descriptionProduct = document.getElementById('description');
-    const addToCart = document.getElementById('addToCart');
 
     // INJECTE LES RESULTATS DANS LEURS CONTENEURS //
     imgUrl.setAttribute('src', product.imageUrl);
     nameProduct.innerText = product.name;
     priceProduct.innerText = `${product.price / 100}.00€`;
     descriptionProduct.innerText = product.description;
-    product.lenses.forEach(lenses => {displayLense(lenses)})
-    // AU CLICK SUR AJOUTER AU PANIER       
-    addToCart.addEventListener('click', function() {
+    
+    // CREATION D UNE BOUCLE POUR L AFFICHAGE DES LENTILLES DANS LE MENU //
+    for (i = 0; i < product.lenses.length; i++) {
+        // CREATION DES BOUTONS ET ATTIBUTION DES CLASSES PUIS ON RATACHE AU DROPDOWN//
+        let dropdownItems = document.createElement('button');
+        dropdownItems.setAttribute('class', 'dropdown-item');
+        dropdownItems.setAttribute('value', product.lenses[i]);
+        dropdownItems.innerHTML = product.lenses[i];
+        dropdown.appendChild(dropdownItems);
+        let lenseSelected = document.getElementsByClassName('dropdown-item');
+        // CREATION D UN NOUVELLE BOUCLE POUR RECUPERER / AFFICHER / STOCKER LA LENTILLE CHOISIE PAR L UTILISATEUR//
+        for(let i = 0; i < lenseSelected.length; i++) {
+            lenseSelected[i].addEventListener('click', function() {
+                const lenseValue = this.value 
+                dropdownMenu.textContent = lenseValue;
+                dropdownMenu.value = lenseValue;
+    
+        })
 
-        // AJOUTE LE PRODUIT CHOISI DANS UN TABLEAU
-        addToCartProduct.push(product);
-        /*const index = addToCartProduct.indexOf(0);
-        addToCartProduct[index] = buttonClicked;
-        addToCartProduct;*/
-
-        // LE CONTENU DU TABLEAU EST STOCKE DANS LE LOCALSTORAGE
-        localStorage.setItem('cart', JSON.stringify(addToCartProduct));
-    })
+    }}
     
 };
 
-// FONCTION PERMETTANT D AFFICHER LES LENTILLES DANS LE DROPDOWN DYNAMIQUEMENT ET DE RECUPERER LA LENTILLE CHOISIE //
-function displayLense(lenses) {
-    // CREATION DE BOUTONS SELON LA QUANTITE DE LENTILLE //
-    let dropdownItems = document.createElement('button');
-    // ATTRIBUTION DE LA CLASSE BOOTSTRAP + AJOUT DE LA VALUE POUR LA RECUPERER PLUS TARD //
-    dropdownItems.setAttribute('class', 'dropdown-item');
-    dropdownItems.setAttribute('value', lenses);
-    // AJOUT DU NOM DE LA LENTILLE SUR SON BOUTON //
-    dropdownItems.innerHTML = lenses;
-    // AJOUT DU BOUTON DANS LE DOM//
-    dropdown.appendChild(dropdownItems);
-    // CREATION D UN VARIABLE POUR RECUPERER LA LENTILLE CHOISI //
-    let lenseSelected = document.getElementsByClassName('dropdown-item');
-    // BOUCLE DANS LE TABLEAU DE LENTILLE //
-    for(let i = 0; i < lenseSelected.length; i++) {
-        // RECUPERATION DE LA LENTILLE CHOISIE AU CLICK //
-        lenseSelected[i].addEventListener('click', function(){
-            // RECUPERATION DU CONTENEUR POUR AFFICHER LE CHOIX DE LA LENTILLE //
-            let lenseBox = document.getElementById('lenseBox')
-            // RECUPERATION DE LA LENTILLE CHOISIE DANS UNE VARIABLE //
-            const buttonClicked = this.value;
-            // AFFICHAGE DE LA LENTILLE CHOISIE DANS SON CONTENEUR //
-            lenseBox.textContent = 'Votre lentille : ' + buttonClicked;
-            //addToCartProduct.push(buttonClicked);
-        })
+
+/**
+ * @description Fonction permettant de gérer les données envoyées / récupérées au localStorage
+ * @param {string} product 
+ */
+function addDataToStorage(product) {
+    // FONCTION DECLENCHE PAR LE CLICK SUR LE BOUTON AJOUTER AU PANIER //
+    function addToCart() {
+        // ON VERIFIE LE CONTENU DU LOCALSTORAGE //
+        let productChoose = localStorage.getItem("object");
+        let idProduct = localStorage.getItem("id");
+        // SI VIDE ON CREE UN TABLEAU VIDE POUR CHAQUE //  
+        products = productChoose ? JSON.parse(productChoose) : [];
+        idProducts = idProduct ? JSON.parse(idProduct) : [];
+        // ON STOCKE LES DONNEES DANS LEUR TABLEAU RESPECTIF //
+        products.push([product, dropdownMenu.value, qty]);
+        idProducts.push(product._id);
+  
+        // ON STOCKE LES TABLEAUX DANS LE LOCALSTORAGE //
+        localStorage.setItem("object", JSON.stringify(products));
+        localStorage.setItem("id", JSON.stringify(idProducts));
+      
     }
-};
+    btnAddToCart.addEventListener("click", addToCart);
+  }
+    
+
+
+
 
 
