@@ -46,10 +46,10 @@ function cloneTable () {
     totalPriceConfirm.classList.add('text-center', 'bold');
     totalPriceConfirm.setAttribute('id', 'totalPriceConfirm');
 
-    totalPriceConfirm.innerText = `Montant total: ${orderCommand.products.price / 100}.00€`
+    totalPriceConfirm.innerText = `Montant total: ${orderCommand.products.price / 100}.00€`;
 }
 
-cloneTable()
+cloneTable();
 
 let nameConfirm = document.querySelectorAll('.nameConfirm');
 let quantityConfirm = document.querySelectorAll('.quantityConfirm');
@@ -78,4 +78,4 @@ function addDataToTheTable() {
     }
 }
 
-addDataToTheTable()
+addDataToTheTable();
