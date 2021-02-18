@@ -5,32 +5,28 @@ let cart = localStorage.getItem("cart");
 let products = JSON.parse(cart);
 console.log(products)
 
-const productCart = new Product(products);
-productCart.display();
-console.log(productCart)
-
-
-/*for(let [id, product] in Object.entries(products)) {
+for(let [id, product] in Object.entries(products)) {
     product = new Product(product);
     console.log(product)
-}*/
-
+}
+// On c'est arrêteé là, malgré mes tests le product a toujours des propriétès vide, 
 
 
 // RECUPERATION DES ELEMENTS DU DOM // 
-/*const btnValidate = document.getElementById('btnValidate');
+const btnValidate = document.getElementById('btnValidate');
 const btnCloseOverlay = document.getElementById('btnCloseOverlay');
 const displayCartContainer = document.getElementById('displayCartContainer');
 const displayCartItem = document.getElementById('displayCartItem');
-const titleContainer = document.getElementById('switchTitle');*/
+const titleContainer = document.getElementById('switchTitle');
 
-
-class Cart {
+// Test de création de classe cart pour gérer le panier, la pour le coup mon objet est pas vide mais je peut rien en faire non plus   //
+/*class Cart {
 
     constructor(products) {
-       //this.subtotal = null;
-       //this.total = null;
-        // on fusionne l'objet product dans cet objet
+       
+        //this.subtotal = null;
+        //this.total = null;
+        // on fusionne l'objet products dans cet objet
         Object.assign(this, products);
     }
 
@@ -40,7 +36,7 @@ class Cart {
         // RECUPERATION DE LA COPIE DU TEMPLATE //
         const cloneElt = document.importNode(templateElt.content, true);
         // PASSAGE DES INFOS DANS LEURS CONTENEURS //
-        cloneElt.getElementById('imgCart').src = productCart.imageUrl;
+        cloneElt.getElementById('imgCart').src = this.imageUrl;
         cloneElt.getElementById('name').textContent = this.name;
         cloneElt.getElementById('price').textContent = `${this.price * this.quantity / 100}.00€`; 
         cloneElt.getElementById('lenseChoice').textContent = this.lenseSelected;
@@ -51,7 +47,12 @@ class Cart {
 
 
     }
-}
+};*/
+
+/*const productCart = new Cart(products);
+productCart.display();
+console.log(productCart)*/
+
 
 
 
@@ -102,74 +103,10 @@ function displayCart() {
     }
 }
 
-displayCart()
+//displayCart()
 
 /*const cardContainer = document.querySelectorAll('.card-container');
 console.log(cardContainer)*/
-
-
-// SELECTIONNE ET POSITIONNE LA QUANTITE AFFICHEE A 1 //
-
-//let quantity = document.querySelectorAll('.quantityProduct');
-/*function updateQuantity () {
-    let quantity = document.querySelector('.quantityProduct')
-    if(!quantity(products[i][2])) {
-
-    }
-}*/
-/*for(i = 0; i < cardContainer.length; i ++) {
-    function increaseQty() {
-        let btnQtyPlus = document.querySelector('.bi-chevron-up');
-        let quantity = document.querySelector('.quantityProduct')    
-        btnQtyPlus.addEventListener('click', function() {
-            quantity.textContent = parseInt(quantity.textContent) + 1;
-                
-        })
-    }       
-    
-    increaseQty()
-    
-    function decreaseQty() {
-        let btnQtyMinus = document.querySelector('.bi-chevron-down');
-        let quantity = document.querySelector('.quantityProduct')
-        btnQtyMinus.addEventListener('click', function() {
-            quantity.textContent = parseInt(quantity.textContent) - 1;        
-                
-        })
-       
-    }
-
-    decreaseQty()
-    
-
-}*/
-    
-
-
-/*function increaseQty(i) {
-    let btnQtyPlus = document.querySelectorAll('.bi-chevron-up');
-    for(i = 0; i < btnQtyPlus.length; i++){
-        btnQtyPlus[i].addEventListener('click', function() {
-            let quantity = document.querySelector('.quantityProduct')
-            quantity.textContent = parseInt(quantity.textContent) + 1;
-          
-            
-        })
-    }
-   
-}
-increaseQty()
-
-function decreaseQty() {
-    let btnQtyMinus = document.querySelector('.bi-chevron-down');
-    let quantity = document.querySelector('.quantityProduct')
-    btnQtyMinus.addEventListener('click', function() {
-        quantity.textContent = parseInt(quantity.textContent) - 1;
-    })
-}
-decreaseQty()*/
-
-
 
 
 /*function removeItem() {
@@ -185,14 +122,6 @@ decreaseQty()*/
 removeItem()
 
 
-//      ADDITIONNER LE PRICE DU PRODUIT AU PRICE TOTAL => UPDATE LE PANIER? }
-
-//      SOUSTRAIRE LE PRICE DU PRODUIT AU PRICE TOTAL => UPDATE LE PANIER? }
-
-
-
-
-   //  UPDATE LE PANIER  !!!!} //
 
 /**
  * @description Fonction permettant d'afficher l'overlay + formulaire
