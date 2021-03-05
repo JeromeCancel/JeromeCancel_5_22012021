@@ -9,12 +9,12 @@ export default class Product {
         this.lenses = [];
         this.quantity = 1;
         this.lenseSelected = null;
-        // on fusionne l'objet product dans cet objet
+        // ON FUSIONNE L OBJET PRODUCT DANS CET OBJET //
         Object.assign(this, product);
     }
     
     /**
-     * @description Permet d'afficher le produit sur la page produit
+     * @description Permet d'afficher le produit sur la page produit.
      */
     display() {
         // RECUPERATION DES DIFFERENTS ELEMENTS //
@@ -46,7 +46,7 @@ export default class Product {
     }
 
     /**
-     * @description Méthode interne click sur la sélection de lentille
+     * @description Méthode interne click sur la sélection de lentille.
      */
     _onSelectedLens(lensValue) {
         dropdownMenu.textContent = lensValue;
@@ -54,7 +54,7 @@ export default class Product {
     }
 
     /**
-     * @description Ajout du produit au panier
+     * @description Ajout du produit au panier.
      */
     addToCart() {
         // ON VERIFIE LE CONTENU DU LOCALSTORAGE //
@@ -72,4 +72,5 @@ export default class Product {
         // ON STOCKE L OBJET DANS LE LOCALSTORAGE //
         localStorage.setItem("cart", JSON.stringify(products));
     }
+    
 };   

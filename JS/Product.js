@@ -2,14 +2,14 @@ import Product from "./Class/ProductClass.js"; // IMPORT DE LA CLASSE PRODUCT //
 
 // RETROUVER L ID DU PRODUIT A L INTERIEUR DE L URL DE LA PAGE PRODUIT
 let params = new URLSearchParams(window.location.search);
-let idProduct = params.get("id")
+let idProduct = params.get("id");
 
 // RECUPERE LE BOUTON VALIDER DANS LE DOM //
 const btnAddToCart = document.getElementById('addToCart');
 
 /**
- * @description Fonction permettant de récupérer les données du produit choisis
- * @param {string} response 
+ * @description Fonction permettant de récupérer les données du produit choisis.
+ * @param {json} response 
  */
 
 function getData() {

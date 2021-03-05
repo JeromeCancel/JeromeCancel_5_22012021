@@ -1,3 +1,6 @@
+/**
+ * @description Fonction permettant l'appel à l'API pour récupérer les données.
+ */
 function getData() {
     // APPEL A L API //
     fetch('http://localhost:3000/api/cameras')
@@ -11,27 +14,29 @@ function getData() {
     })
     .then(products => {
         // ITERATION DE CHAQUE OBJET DANS LE TABLEAU POUR Y PASSER LA FONCTION CREEE PLUS BAS //
-        products.forEach(product => {displayProducts(product)})
+        products.forEach(product => {displayProducts(product)});
     })
-}
-// APPEL DE LA FONCTION //
+};
 getData();
 
-// CREER LA FONCTION POUR AFFICHER LES VIGNETTES PRODUITS //
+/**
+ * @description Fonction pour afficher tous les produits de la réponse.
+ * @param {object} product 
+ */
 function displayProducts(product) {
     // RECUPERER LA BALISE TEMPLATE DANS LE DOM //
     const templateElt = document.getElementById('cardTemplate');
     // RECUPERER LA COPIE DU TEMPLATE //
     const cloneElt = document.importNode(templateElt.content, true);
     // PASSAGE DES INFOS DES OBJETS DANS LEUR CONTENEUR //
-    cloneElt.getElementById('productLinkCard').href = `/product.html?id=${product._id}`
-    cloneElt.getElementById('productImg').src = product.imageUrl
-    cloneElt.getElementById('productTitle').textContent = product.name
-    cloneElt.getElementById('productTitle').href = `/product.html?id=${product._id}`
-    cloneElt.getElementById('productPrice').textContent = `${product.price / 100}.00€`
-    cloneElt.getElementById('productDescription').textContent = product.description
+    cloneElt.getElementById('productLinkCard').href = `/product.html?id=${product._id}`;
+    cloneElt.getElementById('productImg').src = product.imageUrl;
+    cloneElt.getElementById('productTitle').textContent = product.name;
+    cloneElt.getElementById('productTitle').href = `/product.html?id=${product._id}`;
+    cloneElt.getElementById('productPrice').textContent = `${product.price / 100}.00€`;
+    cloneElt.getElementById('productDescription').textContent = product.description;
     // AJOUT DU TEMPLATE COPIES ET REMPLIS DANS LE DOM //
-    document.getElementById('productsContainer').appendChild(cloneElt)
-}
+    document.getElementById('productsContainer').appendChild(cloneElt);
+};
 
 

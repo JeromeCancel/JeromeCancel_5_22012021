@@ -52,7 +52,7 @@
                 <h1 class="text-uppercase" id="switchTitle"></h1>
             </div>
         </div>
-        <div class="row mt-5" id="displayCartContainer">
+        <div class="row mt-5 justify-content-center" id="displayCartContainer">
             <!--displayShoppingCart-->
             <!--templateForJS-->
             <template id="displayCartItem">
@@ -67,7 +67,7 @@
                                         <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                                     </svg>
                                 </button>
-                            <h3 class="text-success pt-2" id="price"></h3>
+                            <h3 class="text-success pt-2 price"></h3>
                             <h4 class="bold pt-3">Lentille: 
                                 <span class="text-muted" id="lenseChoice"></span>
                             </h4>
@@ -87,13 +87,13 @@
             <!--endOfTemplateForJS-->
             <!--endOFDisplayShoppingCart-->
             <!--containerTotalPrice-->
-            <div class="col-lg-3 sticky-top">
+            <div class="col-lg-12 mt-5" id="containerTotalPrice">
                 <div class="card text-center">
                     <div class="card-body">
                          <h2 class="card-title text-decoration-none text-uppercase text-primary" id="totalPriceTitle">prix total</h2>
                     </div>
                     <div class="card-footer d-flex flex-column">
-                        <h3 class="text-success py-3" id="totalPrice">1500.55 €</h3>
+                        <h3 class="text-success py-3" id="totalPrice"></h3>
                         <button class="btn btn-success mb-3" id="btnValidate">Valider votre commande</button>
                     </div>
                 </div>
@@ -190,7 +190,7 @@
     </div>
     <!--endOfMainContent-->
     <!--footer-->
-    <footer class="container-fluid bg-dark mt-4 pb-1 fixed-bottom">
+    <footer class="container-fluid bg-dark pb-1" id="footer-basket">
         <div class="row justify-content-sm-around mx-auto">
             <div class="col-3 mt-3 padding-col-footer">
                 <h4 class="text-white text-uppercase bold">à propos</h4>
