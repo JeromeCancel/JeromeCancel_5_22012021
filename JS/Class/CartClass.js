@@ -4,9 +4,15 @@ export default class Cart {
 
     constructor() {
        
+        let titleContainer = document.getElementById('switchTitle');
         let cartJSON = localStorage.getItem('cart');
         let cart = JSON.parse(cartJSON);
-        if (cart === null) throw 'Erreur panier localStorage';
+        if (cart === null) {
+            titleContainer.innerText ='Votre panier est vide';
+            throw 'Erreur panier localStorage';
+        } else {
+            titleContainer.innerText ='Contenu de votre panier';
+        }
         this.content = cart;
     }
 

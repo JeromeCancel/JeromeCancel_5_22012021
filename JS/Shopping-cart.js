@@ -2,21 +2,6 @@ import Cart from "./Class/CartClass.js";
 
 const cart = new Cart();
 cart.display();
-console.log(cart)
-
-/**
- * @description Fonction permettant de modifier le titre selon si le panier est vide ou pas.
- */
-function switchTitle() {
-    let titleContainer = document.getElementById('switchTitle');
-    // VERIFICATION DU CONTENU CART DANS LE LOCALSTORAGE ET CHANGEMENT DU TITRE EN FONCTION DE LA REPONSE //
-    if(localStorage.length === 0) {
-        titleContainer.innerText='Votre panier est vide';
-      } else {
-        titleContainer.innerText='Contenu de votre panier';
-      }
-}
-switchTitle();
 
 /** 
 * @description Fonction permettant d'afficher l'overlay + formulaire.
