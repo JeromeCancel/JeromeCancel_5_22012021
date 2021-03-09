@@ -89,15 +89,14 @@ export default class Cart {
     * @param {string} id
     */
     _removeProduct(id) {
-       const product = this.content[id];
-       localStorage.removeItem('cart', product)
+       delete this.content[id];
        // ON MODIFIE LE DOM //
        const blocProduct = document.getElementById(id);
        let displayCartContainer = document.getElementById('displayCartContainer');
        displayCartContainer.removeChild(blocProduct);
-       
+       // ON UPDATE //
        this._updateLocalStorage();
-       //this._updateTotal();
+       this._updateTotal();
         
     }
 
